@@ -1,7 +1,21 @@
 import React, { Component } from 'react'
 import Newsitem from './Newsitem'
 import Spinner from './Spinner'
+import PropTypes from 'prop-types'
 export class News extends Component {
+  static defaultProps ={
+    country:'in',
+    pagesize:8,
+    category:'general'
+  }  
+
+  static propTypes={
+    country:PropTypes.string,
+    pagesize :PropTypes.number,
+    category :PropTypes.string,
+  }
+
+
   constructor(){
     
     super()
@@ -14,7 +28,7 @@ export class News extends Component {
   
   
   async componentDidMount(){
-    let url =`https://newsapi.org/v2/top-headlines?country=in&apiKey=6ed7e1877c8d42a89b18825fcdbc68e1&page=1&pagesize=${this.props.pagesize}`
+    let url =`https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=6ed7e1877c8d42a89b18825fcdbc68e1&page=1&pagesize=${this.props.pagesize}`
     this.setState({loading:true})
     let data = await fetch(url)
     let parseData = await data.json()
@@ -24,7 +38,7 @@ export class News extends Component {
   
   PREV= async ()=>{
     
-    let url =`https://newsapi.org/v2/top-headlines?country=in&apiKey=6ed7e1877c8d42a89b18825fcdbc68e1&page=${this.state.page-1}&pagesize=${this.props.pagesize}`
+    let url =`https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=6ed7e1877c8d42a89b18825fcdbc68e1&page=${this.state.page-1}&pagesize=${this.props.pagesize}`
     this.setState({loading:true})
     let data = await fetch(url)
     let parseData = await data.json()
@@ -41,7 +55,7 @@ export class News extends Component {
 
     
     
-      let url =`https://newsapi.org/v2/top-headlines?country=in&apiKey=6ed7e1877c8d42a89b18825fcdbc68e1&page=${this.state.page+1}&pagesize=${this.props.pagesize}`
+      let url =`https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=6ed7e1877c8d42a89b18825fcdbc68e1&page=${this.state.page+1}&pagesize=${this.props.pagesize}`
       this.setState({loading:true})
       let data = await fetch(url)
       let parseData = await data.json()
