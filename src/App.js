@@ -12,7 +12,8 @@ import{
 }from "react-router-dom"
 export default class App extends Component {
   pagesize=12
-  state={
+  apikey =process.env.REACT_APP_NEWS_API
+    state={
     progress:10
   
   }
@@ -36,13 +37,13 @@ export default class App extends Component {
         <Navbar/>
         
         <Routes>        
-        <Route exact path='/' element={<News setProgress={this.setProgress} key = 'general' pagesize={this.pagesize} country='in' category='general'/>}/>
-        <Route exact path='/health' element={<News setProgress={this.setProgress} key = 'health'pagesize={this.pagesize} country='in' category='health'/>}/>
-        <Route exact path='/business' element={<News setProgress={this.setProgress} key = 'business' pagesize={this.pagesize} country='in' category='business'/>}/>
-        <Route exact path='/technology'element={<News setProgress={this.setProgress} key = 'technology'pagesize={this.pagesize} country='in' category='technology'/>}/>
-        <Route exact path='/sports'element={<News setProgress={this.setProgress} key = 'sports' pagesize={this.pagesize} country='in' category='sports'/>}/>
-        <Route exact path='/science'element={<News setProgress={this.setProgress} key = 'science'pagesize={this.pagesize} country='in' category='science'/>}/>
-        <Route exact path='/entertainment'element={<News setProgress={this.setProgress} key = 'entertainment' pagesize={this.pagesize} country='in' category='entertainment'/>}/>
+        <Route exact path='/' element={ <News apikey ={this.apikey}setProgress={this.setProgress} key = 'general' pagesize={this.pagesize} country='in' category='general'/>}/>
+        <Route exact path='/health' element={ <News apikey ={this.apikey}setProgress={this.setProgress} key = 'health'pagesize={this.pagesize} country='in' category='health'/>}/>
+        <Route exact path='/business' element={ <News apikey ={this.apikey}setProgress={this.setProgress} key = 'business' pagesize={this.pagesize} country='in' category='business'/>}/>
+        <Route exact path='/technology'element={ <News apikey ={this.apikey}setProgress={this.setProgress} key = 'technology'pagesize={this.pagesize} country='in' category='technology'/>}/>
+        <Route exact path='/sports'element={ <News apikey ={this.apikey}setProgress={this.setProgress} key = 'sports' pagesize={this.pagesize} country='in' category='sports'/>}/>
+        <Route exact path='/science'element={ <News apikey ={this.apikey}setProgress={this.setProgress} key = 'science'pagesize={this.pagesize} country='in' category='science'/>}/>
+        <Route exact path='/entertainment'element={ <News apikey ={this.apikey}setProgress={this.setProgress} key = 'entertainment' pagesize={this.pagesize} country='in' category='entertainment'/>}/>
         
         </Routes>
         </Router>
